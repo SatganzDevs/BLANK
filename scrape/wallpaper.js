@@ -1,7 +1,7 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+import axios from 'axios';
+import cheerio from 'cheerio';
 
-async function wallpaper(query) {
+export const wallpaper = (query) => {
 try {
 console.log('started');
 const response = await axios.get('https://www.wallpaperflare.com/search?wallpaper=' + query);
@@ -34,5 +34,3 @@ error: error.message
 }
 }
 
-// Contoh penggunaan
-wallpaper('anime').then(data => console.log(data)).catch(error => console.error(error));
