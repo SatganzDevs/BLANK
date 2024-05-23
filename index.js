@@ -1,21 +1,18 @@
 import express from 'express';
-const app = express();
 import cors from 'cors';
-import secure from 'ssl-express-www';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { fileURLToPath } from "url";
 import apirouter from './routes/api.js'
 
 
 
 
-
-const __dirname = dirname(fileURLToPath(import.meta.url || import.meta.url));
+const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.enable('trust proxy');
 app.set("json spaces",2)
 app.use(cors())
-app.use(secure)
 app.use('/api', apirouter)
 app.use(express.static(path.join(__dirname, "public")));
 
