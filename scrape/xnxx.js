@@ -1,8 +1,9 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+import axios from 'axios';
+import cheerio from 'cheerio';
+
 
 /* New Line */
-function xnxxsearch(query) {
+export const xnxxsearch = (query) => {
 return new Promise((resolve, reject) => {
 const baseurl = "https://www.xnxx.com";
 axios.get(`https://www.xnxx.com/search/${query}`).then((res) => {
@@ -53,9 +54,9 @@ results
 .catch((err) => reject({ code: 503, status: false, result: err }));
 });
 }
-function xnxxdl(URL) {
+export const xnxxdl = (urlnya) => {
 return new Promise((resolve, reject) => {
-fetch(URL).then((res) => {
+fetch(urlnya).then((res) => {
 let $ = cheerio.load(res, {
 xmlMode: false,
 });
@@ -106,4 +107,4 @@ files,
 // Contoh penggunaan
 //xnxxsearch('stepson').then(data => console.log(data)).catch(error => console.error(error));
 
-module.exports = {xnxxsearch, xnxxdl}
+
