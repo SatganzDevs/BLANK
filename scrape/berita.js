@@ -1,7 +1,7 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+import axios from 'axios';
+import cheerio from 'cheerio';
 
-const pitutur = async(query) => {
+export const pitutur = async(query) => {
 try {
 const response = await axios.get(`https://www.pitutur.id/news`);
 const html = response.data;
@@ -29,6 +29,3 @@ error: error.message
 };
 }
 }
-
-
-module.exports = {pitutur}
