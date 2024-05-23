@@ -1,12 +1,10 @@
 import { Router } from 'express';
-import cors from 'cors';
-import secure from 'ssl-express-www';
 import path from 'path';
 import axios from 'axios';
 import cheerio from 'cheerio';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import nulish from 'nulis'
+//import nulish from 'nulis'
 import fs from 'fs';
 import JXR from 'jxr-canvas';
 
@@ -134,34 +132,34 @@ res.set({
 
 res.send(buffer);
 });
-router.get("/nulis", async (req, res) => {
-let { text, nama, kelas, hari, tanggal } = req.query;
-if (!text || !nama || !kelas || !hari || !tanggal) {
-return res.json({
-status: false,
-creator: 'SatzzDev',
-message: 'input parameter text nama kelas hari tanggal, contoh: ?text=hello&nama=satzz&kelas=1&hari=senin&tanggal=1'
-});
-}
+// router.get("/nulis", async (req, res) => {
+// let { text, nama, kelas, hari, tanggal } = req.query;
+// if (!text || !nama || !kelas || !hari || !tanggal) {
+// return res.json({
+// status: false,
+// creator: 'SatzzDev',
+// message: 'input parameter text nama kelas hari tanggal, contoh: ?text=hello&nama=satzz&kelas=1&hari=senin&tanggal=1'
+// });
+// }
 
-try {
-const mager = new nulish.nulis();
-const image = await mager.buku1(text, nama, kelas, hari, tanggal);
-const imagePath = path.join(__dirname, 'hasil.jpg');
-const response = fs.readFileSync(imagePath);
-const buffer = Buffer.from(response, "binary");
+// try {
+// const mager = new nulish.nulis();
+// const image = await mager.buku1(text, nama, kelas, hari, tanggal);
+// const imagePath = path.join(__dirname, 'hasil.jpg');
+// const response = fs.readFileSync(imagePath);
+// const buffer = Buffer.from(response, "binary");
 
-res.set({
-"Content-Type": "image/jpeg",
-"Content-Length": buffer.length,
-"Cache-Control": "public, max-age=31536000",
-});
-res.send(buffer);
-} catch (error) {
-console.error(error);
-res.status(500).json({ status: false, message: 'Error generating image' });
-}
-});
+// res.set({
+// "Content-Type": "image/jpeg",
+// "Content-Length": buffer.length,
+// "Cache-Control": "public, max-age=31536000",
+// });
+// res.send(buffer);
+// } catch (error) {
+// console.error(error);
+// res.status(500).json({ status: false, message: 'Error generating image' });
+// }
+// });
 router.get("/welcome", async (req, res) => {
 let { username, guildname, guildicon, membercount, avatar, background} = req.query;
 if (!username || !guildname || !guildicon || !membercount || !avatar) {
