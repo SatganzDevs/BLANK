@@ -1,14 +1,14 @@
 {
-  "name": "nodejs",
+  "name": "express-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "simple api",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Satzzdev",
   "license": "ISC",
   "dependencies": {
     "@tobyg74/tiktok-api-dl": "^1.1.1",
@@ -17,8 +17,6 @@
     "canvas": "^2.11.2",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "fs-extra": "^11.2.0",
-    "node-fetch": "^3.3.2"
+    "express": "^4.18.2"
   }
 }
