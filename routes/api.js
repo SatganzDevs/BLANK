@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import nulish from 'nulis'
 import fs from 'fs';
-//import JXR from 'jxr-canvas';
+import JXR from 'jxr-canvas';
 
 const router = new Router();
 
@@ -160,99 +160,99 @@ console.error(error);
 res.status(500).json({ status: false, message: 'Error generating image' });
 }
 });
-// router.get("/welcome", async (req, res) => {
-// let { username, guildname, guildicon, membercount, avatar, background} = req.query;
-// if (!username || !guildname || !guildicon || !membercount || !avatar) {
-// return res.json({
-// status: false,
-// creator: 'SatzzDev',
-// message: 'input parameter username guildname guildicon membercount avatar, contoh: ?username=Satzz&guildname=Siesta - MD&guildicon=&membercount=1&tanggalavatar=1'
-// });
-// }
+router.get("/welcome", async (req, res) => {
+let { username, guildname, guildicon, membercount, avatar, background} = req.query;
+if (!username || !guildname || !guildicon || !membercount || !avatar) {
+return res.json({
+status: false,
+creator: 'SatzzDev',
+message: 'input parameter username guildname guildicon membercount avatar, contoh: ?username=Satzz&guildname=Siesta - MD&guildicon=&membercount=1&tanggalavatar=1'
+});
+}
 
-// try {
-// var image = await new JXR.Welcome()
-// .setUsername(username)
-// .setGuildName(guildname)
-// .setGuildIcon(guildicon)
-// .setMemberCount(membercount)
-// .setAvatar(avatar)
-// .setBackground(background ? background : "https://telegra.ph/file/c792631587035c6cd185e.jpg")
-// .toAttachment();
+try {
+var image = new JXR.Welcome()
+.setUsername(username)
+.setGuildName(guildname)
+.setGuildIcon(guildicon)
+.setMemberCount(membercount)
+.setAvatar(avatar)
+.setBackground(background ? background : "https://telegra.ph/file/c792631587035c6cd185e.jpg")
+.toAttachment();
 
-// let buffer = image.toBuffer();
+let buffer = image.toBuffer();
 
-// res.set({
-// "Content-Type": "image/jpeg",
-// "Content-Length": buffer.length,
-// "Cache-Control": "public, max-age=31536000",
-// });
-// res.send(buffer);
-// } catch (error) {
-// console.error(error);
-// res.status(500).json({ status: false, message: 'Error generating image' });
-// }
-// });
-// router.get("/goodbye", async (req, res) => {
-// let { username, guildname, guildicon, membercount, avatar, background} = req.query;
-// if (!username || !guildname || !guildicon || !membercount || !avatar) {
-// return res.json({
-// status: false,
-// creator: 'SatzzDev',
-// message: 'input parameter username guildname guildicon membercount avatar, contoh: ?username=Satzz&guildname=Siesta - MD&guildicon=&membercount=1&tanggalavatar=1'
-// });
-// }
+res.set({
+"Content-Type": "image/jpeg",
+"Content-Length": buffer.length,
+"Cache-Control": "public, max-age=31536000",
+});
+res.send(buffer);
+} catch (error) {
+console.error(error);
+res.status(500).json({ status: false, message: 'Error generating image' });
+}
+});
+router.get("/goodbye", async (req, res) => {
+let { username, guildname, guildicon, membercount, avatar, background} = req.query;
+if (!username || !guildname || !guildicon || !membercount || !avatar) {
+return res.json({
+status: false,
+creator: 'SatzzDev',
+message: 'input parameter username guildname guildicon membercount avatar, contoh: ?username=Satzz&guildname=Siesta - MD&guildicon=&membercount=1&tanggalavatar=1'
+});
+}
 
-// try {
-// var image = await new JXR.Goodbye()
-// .setMemberCount(membercount)
-// .setAvatar(avatar)
-// .setUsername(username)
-// .setBg(background ? background : "https://telegra.ph/file/c792631587035c6cd185e.jpg")
-// .toAttachment();
+try {
+var image = new JXR.Goodbye()
+.setMemberCount(membercount)
+.setAvatar(avatar)
+.setUsername(username)
+.setBg(background ? background : "https://telegra.ph/file/c792631587035c6cd185e.jpg")
+.toAttachment();
 
-// let buffer = image.toBuffer();
+let buffer = image.toBuffer();
 
-// res.set({
-// "Content-Type": "image/jpeg",
-// "Content-Length": buffer.length,
-// "Cache-Control": "public, max-age=31536000",
-// });
-// res.send(buffer);
-// } catch (error) {
-// console.error(error);
-// res.status(500).json({ status: false, message: 'Error generating image' });
-// }
-// });
+res.set({
+"Content-Type": "image/jpeg",
+"Content-Length": buffer.length,
+"Cache-Control": "public, max-age=31536000",
+});
+res.send(buffer);
+} catch (error) {
+console.error(error);
+res.status(500).json({ status: false, message: 'Error generating image' });
+}
+});
 
-// router.get("/gura", async (req, res) => {
-// let { username} = req.query;
-// if (!username ) {
-// return res.json({
-// status: false,
-// creator: 'SatzzDev',
-// message: 'input parameter username'
-// });
-// }
+router.get("/gura", async (req, res) => {
+let { username} = req.query;
+if (!username ) {
+return res.json({
+status: false,
+creator: 'SatzzDev',
+message: 'input parameter username'
+});
+}
 
-// try {
-// var image = await new JXR.Gura()
-// .setName(username)
-// .toAttachment();
+try {
+var image = new JXR.Gura()
+.setName(username)
+.toAttachment();
 
-// let buffer = image.toBuffer();
+let buffer = image.toBuffer();
 
-// res.set({
-// "Content-Type": "image/jpeg",
-// "Content-Length": buffer.length,
-// "Cache-Control": "public, max-age=31536000",
-// });
-// res.send(buffer);
-// } catch (error) {
-// console.error(error);
-// res.status(500).json({ status: false, message: 'Error generating image' });
-// }
-// });
+res.set({
+"Content-Type": "image/jpeg",
+"Content-Length": buffer.length,
+"Cache-Control": "public, max-age=31536000",
+});
+res.send(buffer);
+} catch (error) {
+console.error(error);
+res.status(500).json({ status: false, message: 'Error generating image' });
+}
+});
 
 
 router.get("/wallpaper", async (req, res) => {
