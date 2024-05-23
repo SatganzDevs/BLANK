@@ -11,7 +11,7 @@ import apirouter from './routes/api.js'
 
 
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url || import.meta.url));
 app.enable('trust proxy');
 app.set("json spaces",2)
 app.use(cors())
