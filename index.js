@@ -5,7 +5,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 
-const app = express();
+const app = new express();
 
 
 const __filename = fileURLToPath(import.meta.url);
