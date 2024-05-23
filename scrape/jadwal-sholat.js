@@ -1,8 +1,7 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+import axios from 'axios';
+import cheerio from 'cheerio';
 
-
-async function jadwalSholat(kode_daerah) {
+export const jadwalSholat = async (kode_daerah) => {
 try {
 const response = await axios.get('https://jadwalsholat.org/jadwal-sholat/daily.php?id='+ kode_daerah);
 const html = response.data; 
@@ -44,7 +43,7 @@ error: error.message
 }
 
 
-async function findKodeDaerah(nama_daerah) {
+export const findKodeDaerah = async(nama_daerah) =>{
 try {
 const response = await axios.get('https://jadwalsholat.org/jadwal-sholat/monthly.php');
 const html = response.data;
@@ -77,6 +76,3 @@ error: error.message
 };
 }
 }
-
-
-module.exports = {findKodeDaerah, jadwalSholat}
