@@ -1,7 +1,7 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
+import axios from 'axios';
+import cheerio from 'cheerio';
 
-const instaDL = async (url) => {
+export const instaDL = async (url) => {
 try {
 const response = await axios.post('https://snapinsta.to/api/ajaxSearch', `q=${encodeURIComponent(url)}&t=media&lang=en`, {
 headers: {
@@ -25,5 +25,3 @@ error: error.message
 };
 }
 }
-
-module.exports = {instaDL}
