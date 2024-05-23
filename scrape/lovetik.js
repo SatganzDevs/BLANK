@@ -2,15 +2,14 @@
 // Copyright (c) Satganzdevs
 // Do Not Change!
 
-const axios = require('axios');
-const FormData = require('form-data');
+import axios from 'axios';
+import FormData from 'form-data';
 
 
-async function loveTik() {
+export const loveTik = async(url) {
 try {
-console.log('started');
 const formData = new FormData();
-formData.append('query', 'https://www.tiktok.com/@langkait/video/7345058642485382401?is_from_webapp=1&sender_device=pc');
+formData.append('query', url);
 const response = await axios.post('https://lovetik.com/api/ajax/search', formData, {
 headers: formData.getHeaders() // Menambahkan header yang diperlukan untuk FormData
 });
@@ -29,12 +28,7 @@ avatar: response.data.author_a
 video,
 audio
 }
-
 } catch (error) {
 console.error('Error scraping:', error);
 }
 }
-
-
-
-module.exports = {loveTik}
